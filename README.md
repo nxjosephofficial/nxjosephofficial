@@ -1,3 +1,5 @@
 <p><img src="Hi.gif" width="50" height="50"/> Hi, I’m @nxjosephofficial</p>
-- 👀 I’m interested in open source,gnu/linux,web development.<br>
-- 🌱 I’m currently learning HTML
+<ul type="disc">
+<li>👀 I’m interested in open source,gnu/linux,web development.</li>
+<li>🌱 I’m currently learning HTML</li>
+</ul>
