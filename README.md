@@ -4,5 +4,5 @@
 <li>🌱 I’m currently learning HTML</li>
 </ul>
 <audio controls autoplay loop>
-  <source src="fav_soundtrack.mp3" type="audio/mp3">
+  <source src="fav_soundtrack.mov" type="audio/mp3">
 </audio>
