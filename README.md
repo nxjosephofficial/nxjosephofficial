@@ -3,4 +3,4 @@
 <li>👀 I’m interested in open source,gnu/linux,web development.</li>
 <li>🌱 I’m currently learning HTML</li>
 </ul>
-<img src="https://github.com/nxjosephofficial/nxjosephofficial/blob/main/giphy.gif"></img>
+<img src="https://github.com/nxjosephofficial/nxjosephofficial/blob/main/giphy.gif" width="300" height="200" alt="gif"></img>
