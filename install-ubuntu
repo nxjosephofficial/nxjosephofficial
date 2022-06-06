@@ -3,12 +3,12 @@
 if ! type "wget" > /dev/null; then
 sudo apt install wget
 else
-exit
+echo ""
 fi
 if ! type "zenity" > /dev/null; then
 sudo apt install zenity
 else
-exit
+echo ""
 fi
 sudo dpkg --add-architecture i386
 wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo mv winehq.key /usr/share/keyrings/winehq-archive.key
@@ -36,9 +36,8 @@ winetricks -q dxvk
 wget https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B885CD177-3BB6-C201-A889-B01A263811E4%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Dempty/update2/installers/ChromeSetup.exe
 wine ChromeSetup.exe
 sed -i '3s/$/ --no-sandbox/' ~/.local/share/applications/wine/Programs/Google\ Chrome.desktop
-if [ -d "~/Desktop" ]; then
-    sed -i '3s/$/ --no-sandbox/' ~/Desktop/Google\ Chrome.desktop
-elif [ -d "~/Masaüstü" ]; then
+if [ ! -d "~/Desktop/" ]; then
     sed -i '3s/$/ --no-sandbox/' ~/Masaüstü/Google\ Chrome.desktop
+elif [ ! -d "~/Masaüstü/" ]; then
+    sed -i '3s/$/ --no-sandbox/' ~/Desktop/Google\ Chrome.desktop
 fi
-
