@@ -6,7 +6,6 @@ echo ""
 fi
 sudo dpkg --add-architecture i386
 wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo mv winehq.key /usr/share/keyrings/winehq-archive.key
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 distroVersion=$(lsb_release -r | awk '{print $2}')
 if [[ $distroVersion == 20.04 ]]; then
 wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources && sudo mv winehq-focal.sources /etc/apt/sources.list.d/
@@ -14,18 +13,10 @@ elif [[ $distroVersion == 21.10 ]]; then
 wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/impish/winehq-impish.sources && sudo mv winehq-impish.sources /etc/apt/sources.list.d/
 elif [[ $distroVersion == 22.04 ]]; then
 wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources && sudo mv winehq-jammy.sources /etc/apt/sources.list.d/
+fi
 sudo apt update ; sudo apt install --install-recommends winehq-staging winetricks -y
 winetricks -q dxvk
 wget https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B885CD177-3BB6-C201-A889-B01A263811E4%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Dempty/update2/installers/ChromeSetup.exe
 wine ChromeSetup.exe
-sleep 5
 sed -i '3s/$/ --no-sandbox/' ~/.local/share/applications/wine/Programs/Google\ Chrome.desktop
-if [[ ! -f "/home/$USER/Desktop/Google\ Chrome.desktop" || ! -f "/home/$USER/Masaüstü/Google\ Chrome.desktop" ]]; then
-cp ~/.local/share/applications/wine/Programs/Google\ Chrome.desktop /home/$USER/Desktop/
-elif [ -f "/home/$USER/Desktop/Google\ Chrome.desktop" ]; then
-sed -i '3s/$/ --no-sandbox/' ~/Desktop/Google\ Chrome.desktop
-elif [ -f "/home/$USER/Masaüstü/Google\ Chrome.desktop" ]; then
-sed -i '3s/$/ --no-sandbox/' ~/Masaüstü/Google\ Chrome.desktop
-fi
 mv ~/.wine/drive_c/Program\ Files\ \(x86\)/Google/Update/GoogleUpdate.exe ~/.wine/drive_c/Program\ Files\ \(x86\)/Google/Update/GoogleUpdateno.exe
-
